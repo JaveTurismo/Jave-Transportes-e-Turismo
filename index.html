@@ -593,22 +593,22 @@
             }
             
             if (selectedSeats.length !== passengers) {
-                alert(Por favor, selecione exatamente ${passengers} assento(s) para sua reserva.);
+                alert(`Por favor, selecione exatamente ${passengers} assento(s) para sua reserva.`);
                 return;
             }
             
             const seatsNumbers = Array.from(selectedSeats).map(seat => seat.textContent).join(', ');
             
-            let message = Reserva realizada com sucesso!\n\n;
-            message += Assento(s): ${seatsNumbers}\n;
-            message += Passageiros: ${passengers}\n;
-            message += Peso bagagem: ${baggageWeight}kg\n;
+            let message = `Reserva realizada com sucesso!\n\n`;
+            message += `Assento(s): ${seatsNumbers}\n`;
+            message += `Passageiros: ${passengers}\n`;
+            message += `Peso bagagem: ${baggageWeight}kg\n`;
             
             if (excessBaggage > 0) {
-                message += Taxa de excesso de bagagem: R$${excessBaggage.toFixed(2)}\n;
+                message += `Taxa de excesso de bagagem: R$${excessBaggage.toFixed(2)}\n`;
             }
             
-            message += \nEntraremos em contato para confirmação. Obrigado por escolher a Javé Turismo!;
+            message += `\nEntraremos em contato para confirmação. Obrigado por escolher a Javé Turismo!`;
             
             alert(message);
             this.reset();

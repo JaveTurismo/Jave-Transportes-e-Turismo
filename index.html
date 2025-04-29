@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javé Turismo - Brasília/DF ↔ Maranhão/MA</title>
+    <style>
+        :root {
+            --primary-color: #1a3e72;
+            --secondary-color: #f7931e;
+            --whatsapp-color: #25D366;
+            --light-bg: #f8f9fa;
+            --dark-text: #333;
+            --light-text: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #2a5ba8);
+            color: var(--light-text);
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .slogan {
+            font-style: italic;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        nav {
+            background-color: var(--primary-color);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1.2rem;
+        }
+        
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1544620347-c4fd8a51b3db?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        section {
+            margin-bottom: 3.5rem;
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--secondary-color);
+            font-size: 2.2rem;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .booking-form {
+            background-color: var(--primary-color);
+            padding: 2.5rem;
+            border-radius: 10px;
+            color: var(--light-text);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: rgba(255,255,255,0.9);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e07e0c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-whatsapp {
+            background-color: var(--whatsapp-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-whatsapp i {
+            margin-right: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        .trip-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+        
+        .trip-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            background-color: white;
+        }
+        
+        .trip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .trip-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .trip-details {
+            padding: 2rem;
+        }
+        
+        .trip-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin: 1.2rem 0;
+            display: block;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .info-item i {
+            color: var(--secondary-color);
+            margin-right: 0.8rem;
+            margin-top: 0.2rem;
+            font-size: 1.1rem;
+        }
+        
+        .seats-selection {
+            margin: 2rem 0;
+        }
+        
+        .seats-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .seat {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        
+        .seat-available {
+            background-color: #e1f5e1;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+        
+        .seat-available:hover {
+            background-color: #c8e6c9;
+        }
+        
+        .seat-selected {
+            background-color: var(--secondary-color);
+            color: white;
+            border: 1px solid #e07e0c;
+        }
+        
+        .seat-unavailable {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            cursor: not-allowed;
+        }
+        
+        .bus-layout {
+            margin-top: 2rem;
+            position: relative;
+        }
+        
+        .bus-front {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 5px 5px 0 0;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .baggage-info {
+            background-color: #e3f2fd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .baggage-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .about-img {
+            background-image: url('https://images.unsplash.com/photo-1601758003122-53c40e686a19?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            min-height: 350px;
+        }
+        
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        
+        .value-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .value-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-card {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        
+        .contact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+        }
+        
+        .contact-card h3 i {
+            margin-right: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .contact-card p {
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: var(--light-text);
+            margin: 0 1rem;
+            font-size: 1.8rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 2.5rem;
+            right: 2.5rem;
+            background-color: var(--whatsapp-color);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                min-height: 250px;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .slogan {
+                font-size: 1.1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .seats-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Javé Turismo</div>
+        <div class="slogan">Conforto e segurança na estrada desde 2010</div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#passagens">Passagens</a></li>
+            <li><a href="#horarios">Horários</a></li>
+            <li><a href="#bagagem">Bagagem</a></li>
+            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Viaje com a Javé Turismo</h1>
+            <p>O transporte mais confiável entre Brasília e o Maranhão</p>
+            <a href="#passagens" class="btn btn-primary">Comprar Passagem</a>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section class="booking-form" id="passagens">
+            <h2>Reserve sua viagem</h2>
+            <form id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="origem">Origem</label>
+                        <select id="origem" required>
+                            <option value="">Selecione...</option>
+                            <option value="brasilia">Brasília/DF</option>
+                            <option value="maranhao">Maranhão/MA</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="destino">Destino</label>
+                        <select id="destino" required>
+                            <option value="">Selecione...</option>
+                            <option value="maranhao">Maranhão/MA</option>
+                            <option value="brasilia">Brasília/DF</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="data">Data da Viagem</label>
+                        <input type="date" id="data" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="passageiros">Passageiros</label>
+                        <select id="passageiros" required>
+                            <option value="1">1 Passageiro</option>
+                            <option value="2">2 Passageiros</option>
+                            <option value="3">3 Passageiros</option>
+                            <option value="4">4 Passageiros</option>
+                            <option value="5">5 Passageiros</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Verificar Disponibilidade</button>
+                <a href="https://wa.me/5561999999999?text=Olá%20Javé%20Turismo,%20gostaria%20de%20reservar%20uma%20passagem%20para%20Brasília-MA" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Reservar pelo WhatsApp
+                </a>
+            </form>
+        </section>
+        
+        <section id="horarios">
+            <h2>Nossos Horários</h2>
+            <div class="trip-info">
+                <div class="trip-card">
+                    <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1518544866330-95a2bf92c52e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="trip-details">
+                        <h3 class="trip-title">Brasília/DF → Maranhão/MA</h3>
+                        <span class="price">R$ 300,00 por pessoa</span>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <strong>Partidas:</strong> Toda segunda-feira
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Horário:</strong> 20:00h (saída) - 06:00h (chegada aprox.)
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-chair"></i>
+                            <div>
+                                <strong>Assentos:</strong> 50 poltronas reclináveis
+                            </div>
+                        </div>
+                        
+                        <div class="seats-selection">
+                            <h4>Selecione seu assento:</h4>
+                            <div class="bus-layout">
+                                <div class="bus-front">FRENTE DO ÔNIBUS</div>
+                                <div class="seats-grid" id="seatsBrasiliaToMA">
+                                    <!-- Assentos serão gerados por JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary">Reservar Agora</button>
+                    </div>
+                </div>
+                
+                <div class="trip-card">
+                    <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1544620347-c4fd8a51b3db?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="trip-details">
+                        <h3 class="trip-title">Maranhão/MA → Brasília/DF</h3>
+                        <span class="price">R$ 300,00 por pessoa</span>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <strong>Partidas:</strong> Toda quinta-feira
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Horário:</strong> 19:00h (saída) - 05:00h (chegada aprox.)
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-chair"></i>
+                            <div>
+                                <strong>Assentos:</strong> 50 poltronas reclináveis
+                            </div>
+                        </div>
+                        
+                        <div class="seats-selection">
+                            <h4>Selecione seu assento:</h4>
+                            <div class="bus-layout">
+                                <div class="bus-front">FRENTE DO ÔNIBUS</div>
+                                <div class="seats-grid" id="seatsMABrasilia">
+                                    <!-- Assentos serão gerados por JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary">Reservar Agora</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="bagagem">
+            <h2>Política de Bagagem</h2>
+            
+            <div class="baggage-info">
+                <h4>Informações importantes sobre bagagem:</h4>
+                <div class="info-item">
+                    <i class="fas fa-suitcase"></i>
+                    <div>
+                        <strong>Direito de bagagem:</strong> Cada passageiro tem direito a transportar gratuitamente até 30kg de bagagem.
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <strong>Excesso de bagagem:</strong> Acima do peso permitido, será cobrada uma taxa de R$ 4,00 por quilo excedente.
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-box-open"></i>
+                    <div>
+                        <strong>Dimensões:</strong> As bagagens não devem ultrapassar as dimensões máximas de 50cm x 80cm x 30cm.
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-ban"></i>
+                    <div>
+                        <strong>Itens proibidos:</strong> Não são permitidos objetos frágeis, perecíveis, inflamáveis ou ilegais.
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Dicas para sua viagem:</h3>
+            <ul style="margin-left: 2rem;">
+                <li>Identifique claramente sua bagagem com nome e contato</li>
+                <li>Chegue com antecedência para despacho das malas</li>
+                <li>Mantenha objetos de valor e documentos na bagagem de mão</li>
+                <li>Para viagens longas, considere levar um agasalho no ônibus</li>
+            </ul>
+        </section>
+        
+        <section id="sobre">
+            <h2>Sobre a Javé Turismo</h2>
+            <div class="about-grid">
+                <div>
+                    <p>Fundada em 2010, a Javé Turismo é especializada no transporte interestadual entre Brasília/DF e o Maranhão, oferecendo conforto, segurança e pontualidade em todas as suas viagens.</p>
+                    
+                    <h3>Nossa Frota</h3>
+                    <p>Contamos com ônibus modernos equipados com:</p>
+                    <ul style="margin: 1rem 0 1.5rem 2rem;">
+                        <li>Poltronas reclináveis e espaçosas</li>
+                        <li>Ar-condicionado individual</li>
+                        <li>Wi-Fi gratuito</li>
+                        <li>Tomadas USB e 220V</li>
+                        <li>Banheiro químico</li>
+                        <li>Serviço de bordo (água e lanche)</li>
+                        <li>TV com entretenimento</li>
+                    </ul>
+                    
+                    <h3>Nossa Equipe</h3>
+                    <p>Nossos motoristas são profissionais experientes, rigorosamente selecionados e treinados para garantir sua segurança e conforto durante toda a viagem. Nossa equipe de atendimento está pronta para ajudar com qualquer necessidade antes, durante e após sua viagem.</p>
+                </div>
+                
+                <div class="about-img"></div>
+            </div>
+            
+            <h3 style="margin-top: 2.5rem;">Nossos Compromissos</h3>
+            <div class="values">
+                <div class="value-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Segurança</h4>
+                    <p>Manutenção preventiva rigorosa e motoristas treinados para garantir viagens seguras.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-couch"></i>
+                    <h4>Conforto</h4>
+                    <p>Veículos modernos com poltronas espaçosas para você viajar relaxado.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>Pontualidade</h4>
+                    <p>Compromisso com os horários estabelecidos, respeitando seu tempo.</p>
+                </div>
+                
+                <div class="value-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h4>Atendimento</h4>
+                    <p>Equipe treinada para oferecer atendimento humanizado e solucionar suas necessidades.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contato">
+            <h2>Entre em Contato</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3><i class="fas fa-phone-alt"></i> Telefones</h3>
+                    <p><strong>Brasília/DF:</strong><br>(61) 3333-4444</p>
+                    <p><strong>Maranhão/MA:</strong><br>(98) 4444-5555</p>
+                    <p><strong>WhatsApp:</strong><br>(61) 99999-9999</p>
+                    <p><strong>Atendimento 24h:</strong><br>0800 123 4567</p>
+                </div>
+                
+                <div class="contact-card">
+                    <h3><i class="fas fa-envelope"></i> E-mails</h3>
+                    <p><strong>Vendas:</strong><br>vendas@javeturismo.com.br</p>
+                    <p><strong>Atendimento:</strong><br>sac@javeturismo.com.br</p>
+                    <p><strong>Fretamento:</strong><br>fretamento@javeturismo.com.br</p>
+                    <p><strong>Trabalhe conosco:</strong><br>rh@javeturismo.com.br</p>
+                </div>
+                
+                <div class="contact-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Terminais</h3>
+                    <p><strong>Brasília/DF:</strong><br>
+                    Rodoviária do Plano Piloto<br>
+                    Box 25, Ala Sul<br>
+                    CEP: 70070-100</p>
+                    
+                    <p><strong>Maranhão/MA:</strong><br>
+                    Terminal Rodoviário de São Luís<br>
+                    Box 12, Ala Leste<br>
+                    CEP: 65000-000</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="logo">Javé Turismo</div>
+            <p>Transporte Brasília/DF ↔ Maranhão/MA</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p style="margin-top: 1.5rem;">Horário de atendimento: Segunda a Sábado, das 6h às 22h</p>
+            <p>&copy; 2023 Javé Turismo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <a href="https://wa.me/5561999999999?text=Olá%20Javé%20Turismo,%20gostaria%20de%20mais%20informações" class="floating-whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <script>
+        // Gerador de assentos
+        function generateSeats(containerId, totalSeats = 50) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= totalSeats; i++) {
+                const seat = document.createElement('div');
+                seat.className = 'seat seat-available';
+                seat.textContent = i;
+                seat.dataset.seatNumber = i;
+                
+                // Simular alguns assentos ocupados aleatoriamente
+                if (Math.random() < 0.2) {
+                    seat.classList.remove('seat-available');
+                    seat.classList.add('seat-unavailable');
+                }
+                
+                seat.addEventListener('click', function() {
+                    if (this.classList.contains('seat-available')) {
+                        this.classList.remove('seat-available');
+                        this.classList.add('seat-selected');
+                    } else if (this.classList.contains('seat-selected')) {
+                        this.classList.remove('seat-selected');
+                        this.classList.add('seat-available');
+                    }
+                });
+                
+                container.appendChild(seat);
+            }
+        }
+        
+        // Gerar assentos para ambos os ônibus
+        document.addEventListener('DOMContentLoaded', function() {
+            generateSeats('seatsBrasiliaToMA');
+            generateSeats('seatsMABrasilia');
+            
+            // Formulário de busca
+            document.getElementById('bookingForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const origem = document.getElementById('origem').value;
+                const destino = document.getElementById('destino').value;
+                const data = document.getElementById('data').value;
+                
+                if (!origem || !destino || !data) {
+                    alert('Por favor, preencha todos os campos do formulário.');
+                    return;
+                }
+                
+                // Simular busca
+                setTimeout(() => {
+                    alert('Passagens disponíveis! Role a página para ver os horários e selecionar seu assento.');
+                    window.location.href = '#horarios';
+                }, 800);
+            });
+        });
+    </script>
+</body>
+</html>
